@@ -31,35 +31,40 @@ const socials: Social[] = [
 		<title>syntaxian</title>
 
 		<style lang="scss">
-			$social-color: rgb(255, 159, 49);
+			$social-color: #d99f6a;
 
 			a {
 				color: $social-color;
 				text-decoration: none;
 				padding: 10px;
 				border-radius: 8px;
-				background-color: rgb(45, 45, 45);
+				// background-color: rgb(45, 45, 45);
 				display: flex;
-				gap: 1ch;
-				
+				gap: 1.5ch;
 
 				& svg {
 					fill: $social-color;
 				}
-			}
 
+			}	
+			
 			.socials {
 				display: flex;
-				gap: 1ch;
+				flex-direction: column;
+
+				& > .social {
+					max-width: fit-content;
+					font-weight: 800;
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<h1>
+		<h1 style="display: flex; gap: 0.1ch; color: #D99F6A">
 			<span
 				style="vertical-align: middle;"
-				set:html={logo(48, 48)}
-			/>Syntaxian
+				set:html={logo(48, 48, "#D99F6A")}
+			/><span style="font-weight: 900;">yntaxian</span>
 		</h1>
 		<p>
 			Hey, im Syntaxian, im an unfunny programmer on the internet, who
@@ -73,7 +78,12 @@ const socials: Social[] = [
 		<div class="socials">
 			{
 				socials.map((social) => (
-					<a href={social.url} rel="me" title={social.icon.title}>
+					<a
+						class="social"
+						href={social.url}
+						rel="me"
+						title={social.icon.title}
+					>
 						<span
 							set:html={`${social.icon.svg.replace(
 								`role="img"`,
